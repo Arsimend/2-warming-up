@@ -155,7 +155,7 @@ public class CollectionsBasics {
     public List<Integer> indicesOf(String text, String substring) {
         List<Integer> result = new ArrayList<>();
 
-        for (int i = 0; i < text.length() - substring.length(); i++) {
+        for (int i = 0; i <= text.length() - substring.length(); i++) {
 
              if (text.substring(i, i + substring.length()).equals(substring)) {
             result.add(i);
