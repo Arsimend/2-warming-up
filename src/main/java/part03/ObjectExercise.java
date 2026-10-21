@@ -1,5 +1,6 @@
 package part03;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,8 +24,13 @@ public class ObjectExercise {
      * @return A list of names of the people in the list.
      */
     public List<String> getNames(List<Person> people) {
-        // hint: you can call the getName() method of each Person on the list
-        return null;
+         List<String> names = new ArrayList<>();
+
+    for (Person person : people) {
+        names.add(person.getName());
+    }
+
+    return names;
     }
 
     /**
@@ -38,11 +44,21 @@ public class ObjectExercise {
      * @return The oldest person in the list.
      */
     public Person getOldest(List<Person> people) {
-        // hint: you can call the getAge() method of each Person on the list and compare
-        // the ages to find the oldest person
+
+    if (people.isEmpty()) {
         return null;
     }
 
+    Person oldest = people.get(0);
+
+    for (Person person : people) {
+        if (person.getAge() > oldest.getAge()) {
+            oldest = person;
+        }
+    }
+
+    return oldest;
+}
     /**
      * Generates a formatted string from a list of Person objects, representing
      * their names. This method takes a list of Person objects and generates a
@@ -64,8 +80,30 @@ public class ObjectExercise {
      * @param people A list of Person objects to generate the names string from.
      * @return A formatted string representing the names of people in the list.
      */
-    public String generateNamesString(List<Person> people) {
-        // TODO: implement this method
-        return null;
+   public String generateNamesString(List<Person> people) {
+
+    int count = people.size();
+
+    if (count == 0) {
+        return "";
     }
+
+    if (count == 1) {
+        return people.get(0).getName();
+    }
+
+    if (count == 2) {
+        return people.get(0).getName() + " and " + people.get(1).getName();
+    }
+
+    if (count == 3) {
+        return people.get(0).getName() + ", "
+                + people.get(1).getName() + " and "
+                + people.get(2).getName();
+    }
+
+    return people.get(0).getName() + ", "
+            + people.get(1).getName() + " and "
+            + (count - 2) + " others";
+}
 }
